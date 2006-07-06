@@ -1,0 +1,44 @@
+--- libssh-0.11/Makefile.in~	2005-03-04 20:54:59.000000000 +0100
++++ libssh-0.11/Makefile.in	2006-05-27 18:30:21.000000000 +0200
+@@ -37,10 +37,6 @@
+ 	mkdir $(DISTLIB)
+ 	cp Makefile.in configure.in configure config.h.in install-sh \
+ 	mkinstalldirs config.sub config.guess $(DISTLIB)
+-	mkdir $(DISTLIB)/libssh
+-	mkdir $(DISTLIB)/include
+-	mkdir $(DISTLIB)/include/libssh
+-	mkdir $(DISTLIB)/doc
+ 	cp libssh/Makefile.in $(DISTLIB)/libssh/
+ 	cp libssh/*.c $(DISTLIB)/libssh/
+ 	cp include/libssh/libssh.h include/libssh/sftp.h \
+@@ -55,12 +51,12 @@
+ 	  (cd $$dir && $(MAKE) install) \
+ 	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+ 	done && test -z "$$fail"
+-	$(top_srcdir)/mkinstalldirs $(incldir)/libssh
+-	$(INSTALL) include/libssh/libssh.h $(incldir)/libssh/
+-	$(INSTALL) include/libssh/config.h $(incldir)/libssh/
+-	$(INSTALL) include/libssh/sftp.h $(incldir)/libssh/
+-	$(INSTALL) include/libssh/crypto.h $(incldir)/libssh/
+-	$(INSTALL) include/libssh/server.h $(incldir)/libssh/
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(incldir)/libssh
++	$(INSTALL) include/libssh/libssh.h $(DESTDIR)$(incldir)/libssh/
++	$(INSTALL) include/libssh/config.h $(DESTDIR)$(incldir)/libssh/
++	$(INSTALL) include/libssh/sftp.h $(DESTDIR)$(incldir)/libssh/
++	$(INSTALL) include/libssh/crypto.h $(DESTDIR)$(incldir)/libssh/
++	$(INSTALL) include/libssh/server.h $(DESTDIR)$(incldir)/libssh/
+ clean:
+ 	/bin/rm -f *~ *.o ssh sftp
+ 	@for dir in ${subdirs}; do \
+--- libssh-0.11/libssh/Makefile.in~	2006-05-27 12:40:30.000000000 +0200
++++ libssh-0.11/libssh/Makefile.in	2006-05-27 12:42:55.000000000 +0200
+@@ -35,7 +35,7 @@
+ install: all
+ 	$(top_srcdir)/mkinstalldirs $(incldir)
+ 	$(top_srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL) libssh.$(DYLIB_EXTENSION) $(libdir)
++	$(INSTALL) libssh.$(DYLIB_EXTENSION) $(DESTDIR)$(libdir)
+ clean:
+ 	rm -f *~ libssh.a libssh.so *.o
+ distclean: clean
+
