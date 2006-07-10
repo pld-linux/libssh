@@ -11,9 +11,7 @@ Patch0:		%{name}-makefile.patch
 URL:		http://0xbadc0de.be/wiki/doku.php?id=libssh:libssh
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	intltool
 BuildRequires:	libmagic-devel
-BuildRequires:	libtool
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,13 +51,8 @@ Pliki nag³ówkowe biblioteki libssh.
 %setup -q
 %patch0 -p1
 
-mkdir po
-
 %build
-%{__intltoolize}
-%{__gettextize}
-%{__libtoolize}
-%{__aclocal}
+cp -f /usr/share/automake/config.* .
 %{__autoconf}
 %{__autoheader}
 %configure
