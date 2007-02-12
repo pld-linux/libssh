@@ -1,5 +1,5 @@
 Summary:	Library implementing the SSH protocol
-Summary(pl):	Biblioteka implementuj±ca protokó³ SSH
+Summary(pl.UTF-8):   Biblioteka implementujÄ…ca protokÃ³Å‚ SSH
 Name:		libssh
 Version:	0.11
 Release:	1
@@ -25,27 +25,27 @@ transparent tunnel for your remote programs. With its Secure FTP
 implementation, you can play with remote files easily, without
 third-party programs others than libcrypto (from openssl).
 
-%description -l pl
-Biblioteka ssh zosta³a zaprojektowana do u¿ywania przez programistów
-potrzebuj±cych dzia³aj±cej implementacji SSH w postaci biblioteki. Za
-pomoc± libssh mo¿na przesy³aæ pliki, zdalnie uruchamiaæ programy b±d¼
-te¿ tworzyæ na ich potrzeby bezpieczne i przezroczyste tunele. Dziêki
-zawartej implementacji protoko³u Secure FTP programista ma mo¿liwo¶æ
-³atwego wykonywania operacji na zdalnych plikach bez konieczno¶ci
-korzystania z dodatkowego zewnêtrznego oprogramowania poza bibliotek±
+%description -l pl.UTF-8
+Biblioteka ssh zostaÅ‚a zaprojektowana do uÅ¼ywania przez programistÃ³w
+potrzebujÄ…cych dziaÅ‚ajÄ…cej implementacji SSH w postaci biblioteki. Za
+pomocÄ… libssh moÅ¼na przesyÅ‚aÄ‡ pliki, zdalnie uruchamiaÄ‡ programy bÄ…dÅº
+teÅ¼ tworzyÄ‡ na ich potrzeby bezpieczne i przezroczyste tunele. DziÄ™ki
+zawartej implementacji protokoÅ‚u Secure FTP programista ma moÅ¼liwoÅ›Ä‡
+Å‚atwego wykonywania operacji na zdalnych plikach bez koniecznoÅ›ci
+korzystania z dodatkowego zewnÄ™trznego oprogramowania poza bibliotekÄ…
 libcrypto (pakiet openssl).
 
 %package devel
 Summary:	Header files for libssh library
-Summary(pl):	Pliki nag³ówkowe biblioteki libssh
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libssh
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libssh library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libssh.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libssh.
 
 %prep
 %setup -q
