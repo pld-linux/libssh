@@ -1,5 +1,5 @@
 Summary:	Library implementing the SSH protocol
-Summary(pl.UTF-8):   Biblioteka implementująca protokół SSH
+Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
 Version:	0.11
 Release:	1
@@ -37,7 +37,7 @@ libcrypto (pakiet openssl).
 
 %package devel
 Summary:	Header files for libssh library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libssh
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libssh
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
