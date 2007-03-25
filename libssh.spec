@@ -1,16 +1,14 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.11
+Version:	0.2
 Release:	1
+Epoch:		1
 License:	LGPL
 Group:		Libraries
 Source0:	http://0xbadc0de.be/libssh/%{name}-%{version}.tgz
-# Source0-md5:	ad703c4702646c83ca4fcace92c220d3
-Patch0:		%{name}-makefile.patch
+# Source0-md5:	8a76c03579a3e27046e6bafe88ffd171
 URL:		http://0xbadc0de.be/wiki/doku.php?id=libssh:libssh
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	libmagic-devel
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
@@ -39,7 +37,7 @@ libcrypto (pakiet openssl).
 Summary:	Header files for libssh library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libssh
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files for libssh library.
@@ -49,22 +47,20 @@ Pliki nagłówkowe biblioteki libssh.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.* .
-%{__autoconf}
-%{__autoheader}
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,8 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libssh.so
 %{_includedir}/*
