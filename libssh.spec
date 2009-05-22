@@ -1,16 +1,16 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.2
+Version:	0.3.0
 Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://0xbadc0de.be/libssh/%{name}-%{version}.tgz
-# Source0-md5:	8a76c03579a3e27046e6bafe88ffd171
-URL:		http://0xbadc0de.be/wiki/doku.php?id=libssh:libssh
-BuildRequires:	libmagic-devel
-BuildRequires:	openssl-devel
+Source0:	http://www.libssh.org/files/%{name}-%{version}.tar.gz
+# Source0-md5:	2496338686932685c08ed8f6ad185227
+URL:		http://www.libssh.org/
+BuildRequires:	cmake >= 2.6.0
+BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,12 +49,22 @@ Pliki nagłówkowe biblioteki libssh.
 %setup -q
 
 %build
-%configure
-%{__make} -j1
+mkdir build
+cd build
+%cmake \
+	-DCMAKE_BUILD_TYPE="Release" \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64 \
+%endif
+	..
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
+cd build
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
