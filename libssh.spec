@@ -1,21 +1,22 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.3.4
-Release:	1
+Version:	0.4.0
+Release:	0.git.1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://www.libssh.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	1563f1f78cfa1ff32d214137ac62c818
+#Source0:	http://www.libssh.org/files/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}-git.tar.gz
+# Source0-md5:	0c8db6b22944b0d4f50d3d3dbdf646ae
 URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	zlib-devel
-BuildRequires:	/usr/bin/doxygen
-BuildRequires:	/usr/bin/latex
-BuildRequires:	/usr/bin/makeindex
-BuildRequires:	/usr/bin/dvips
+BuildRequires:	doxygen
+BuildRequires:	tetex-dvips
+BuildRequires:	tetex-format-latex
+BuildRequires:	tetex-makeindex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,10 +51,10 @@ Header files for libssh library.
 Pliki nagłówkowe biblioteki libssh.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-git
 
 %build
-mkdir build
+install -d build
 cd build
 %cmake \
 	-DCMAKE_BUILD_TYPE="Release" \
@@ -68,8 +69,7 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 
-cd build
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
