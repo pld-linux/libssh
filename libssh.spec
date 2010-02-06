@@ -12,10 +12,6 @@ URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	zlib-devel
-BuildRequires:	doxygen
-BuildRequires:	tetex-dvips
-BuildRequires:	tetex-format-latex
-BuildRequires:	tetex-makeindex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
