@@ -1,13 +1,13 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.4.1
+Version:	0.4.2
 Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://www.libssh.org/files/%{name}-%{version}.tar.gz
-# Source0-md5:	258402bf1fabf664daeba4e5fc7a8d09
+# Source0-md5:	249fd41dff094f6b236d69a9d1bbb971
 URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	openssl-devel >= 0.9.8
