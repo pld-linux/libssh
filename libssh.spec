@@ -1,13 +1,13 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.5.0
+Version:	0.5.1
 Release:	1
 Epoch:		1
-License:	LGPL v2.1
+License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
 Source0:	http://www.libssh.org/files/0.5/%{name}-%{version}.tar.gz
-# Source0-md5:	9b37f45751c0ae7ba66099c1fb136946
+# Source0-md5:	0cd8bc9336398e23a76f4e25c1412eb4
 URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 2.6.0
 BuildRequires:	openssl-devel >= 0.9.8
@@ -52,7 +52,8 @@ Pliki nagłówkowe biblioteki libssh.
 %build
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	-DWITH_SSH1=ON
 
 %{__make}
 
@@ -63,19 +64,24 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/lib*.so.?
+%doc AUTHORS BSD ChangeLog README
+%attr(755,root,root) %{_libdir}/libssh.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libssh.so.4
+%attr(755,root,root) %{_libdir}/libssh_threads.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libssh_threads.so.4
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libssh.so
+%attr(755,root,root) %{_libdir}/libssh.so
+%attr(755,root,root) %{_libdir}/libssh_threads.so
 %{_includedir}/libssh
+%{_pkgconfigdir}/libssh.pc
+%{_pkgconfigdir}/libssh_threads.pc
