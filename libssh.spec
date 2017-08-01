@@ -6,8 +6,9 @@ Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
-# dead atm.
-#Source0:	https://red.libssh.org/attachments/download/87/%{name}-%{version}.tar.xz
+#Source0Download: https://red.libssh.org/projects/libssh/files
+#Source0:	https://red.libssh.org/attachments/download/218/%{name}-%{version}.tar.xz
+# (used temporarily, when red.libssh.org was down)
 Source0:	https://git.libssh.org/projects/libssh.git/snapshot/%{name}-%{version}.tar.bz2
 # Source0-md5:	8f044c07902cd3de3e363faa78681772
 URL:		http://www.libssh.org/
