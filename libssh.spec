@@ -1,8 +1,8 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.7.5
-Release:	3
+Version:	0.8.2
+Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
@@ -10,9 +10,9 @@ Group:		Libraries
 #Source0:	https://red.libssh.org/attachments/download/218/%{name}-%{version}.tar.xz
 # (used temporarily, when red.libssh.org was down)
 Source0:	https://git.libssh.org/projects/libssh.git/snapshot/%{name}-%{version}.tar.bz2
-# Source0-md5:	8f044c07902cd3de3e363faa78681772
+# Source0-md5:	9f9d1a27d321c18c8c322528036c0722
 URL:		http://www.libssh.org/
-BuildRequires:	cmake >= 2.6.0
+BuildRequires:	cmake >= 3.3.0
 BuildRequires:	heimdal-devel
 BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	rpmbuild(macros) >= 1.600
@@ -79,14 +79,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BSD ChangeLog README
 %attr(755,root,root) %{_libdir}/libssh.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libssh.so.4
-%attr(755,root,root) %{_libdir}/libssh_threads.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libssh_threads.so.4
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libssh.so
-%attr(755,root,root) %{_libdir}/libssh_threads.so
 %{_includedir}/libssh
 %{_pkgconfigdir}/libssh.pc
-%{_pkgconfigdir}/libssh_threads.pc
 %{_libdir}/cmake/libssh
