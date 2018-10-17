@@ -1,16 +1,13 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.8.2
+Version:	0.8.4
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
-#Source0Download: https://red.libssh.org/projects/libssh/files
-#Source0:	https://red.libssh.org/attachments/download/218/%{name}-%{version}.tar.xz
-# (used temporarily, when red.libssh.org was down)
-Source0:	https://git.libssh.org/projects/libssh.git/snapshot/%{name}-%{version}.tar.bz2
-# Source0-md5:	9f9d1a27d321c18c8c322528036c0722
+Source0:	https://www.libssh.org/files/0.8/%{name}-%{version}.tar.xz
+# Source0-md5:	ae3c5e3ea288a409b45f9664af2ac23a
 URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 3.3.0
 BuildRequires:	heimdal-devel
