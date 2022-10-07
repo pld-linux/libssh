@@ -1,18 +1,17 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.9.6
+Version:	0.10.4
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
-Source0:	https://www.libssh.org/files/0.9/%{name}-%{version}.tar.xz
-# Source0-md5:	0174df377361221a31a9576afbaba330
-Patch0:		openssl3.patch
+Source0:	https://www.libssh.org/files/0.10/%{name}-%{version}.tar.xz
+# Source0-md5:	cb2e47ac2de59eefa31a57ae53b44363
 URL:		http://www.libssh.org/
 BuildRequires:	cmake >= 3.3.0
 BuildRequires:	heimdal-devel
-BuildRequires:	openssl-devel >= 0.9.8
+BuildRequires:	openssl-devel >= 1.0.1
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	zlib-devel >= 1.2
 Requires:	zlib >= 1.2
@@ -51,7 +50,6 @@ Pliki nagłówkowe biblioteki libssh.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 install -d build
@@ -66,8 +64,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	libdir=%{_libdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BSD ChangeLog README
+%doc AUTHORS BSD CHANGELOG README
 %attr(755,root,root) %{_libdir}/libssh.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libssh.so.4
 
