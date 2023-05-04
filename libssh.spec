@@ -13,6 +13,8 @@ BuildRequires:	cmake >= 3.3.0
 BuildRequires:	heimdal-devel
 BuildRequires:	openssl-devel >= 1.0.1
 BuildRequires:	rpmbuild(macros) >= 1.605
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel >= 1.2
 Requires:	zlib >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
