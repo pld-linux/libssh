@@ -1,21 +1,23 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.10.6
+Version:	0.11.1
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
-Source0:	https://www.libssh.org/files/0.10/%{name}-%{version}.tar.xz
-# Source0-md5:	5f46371aa8bfa7e6bff7f2a6f3edf80e
-URL:		http://www.libssh.org/
-BuildRequires:	cmake >= 3.3.0
+Source0:	https://www.libssh.org/files/0.11/%{name}-%{version}.tar.xz
+# Source0-md5:	93e6fe0c9effb216a48b8b6bc1e4a576
+URL:		https://www.libssh.org/
+BuildRequires:	cmake >= 3.12.0
 BuildRequires:	heimdal-devel
-BuildRequires:	openssl-devel >= 1.0.1
+# also possible: libgcrypt>=1.5.0 (WITH_GCRYPT), mbedtls (WITH_MBEDTLS)
+BuildRequires:	openssl-devel >= 1.1.1
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel >= 1.2
+Requires:	openssl >= 1.1.1
 Requires:	zlib >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,8 +59,7 @@ Pliki nagłówkowe biblioteki libssh.
 install -d build
 cd build
 %cmake .. \
-	-DWITH_SSH1=ON \
-	-DWITH_ZLIB=ON
+	-DWITH_BLOWFISH_CIPHER=ON
 
 %{__make}
 
