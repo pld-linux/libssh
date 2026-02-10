@@ -1,23 +1,24 @@
 Summary:	Library implementing the SSH protocol
 Summary(pl.UTF-8):	Biblioteka implementująca protokół SSH
 Name:		libssh
-Version:	0.11.3
+Version:	0.12.0
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+; parts are BSD-licensed
 Group:		Libraries
-Source0:	https://www.libssh.org/files/0.11/%{name}-%{version}.tar.xz
-# Source0-md5:	b55bad6ad6fd6b1e191fbb495adcfe40
+Source0:	https://www.libssh.org/files/0.12/%{name}-%{version}.tar.xz
+# Source0-md5:	244ff82e0902ba4bcd89e27f8cc2590c
 URL:		https://www.libssh.org/
 BuildRequires:	cmake >= 3.14.0
 BuildRequires:	heimdal-devel
+BuildRequires:	libfido2-devel
 # also possible: libgcrypt>=1.5.0 (WITH_GCRYPT), mbedtls (WITH_MBEDTLS)
-BuildRequires:	openssl-devel >= 1.1.1
+BuildRequires:	openssl-devel >= 3.5.0
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel >= 1.2
-Requires:	openssl >= 1.1.1
+Requires:	openssl >= 3.5.0
 Requires:	zlib >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,12 +57,12 @@ Pliki nagłówkowe biblioteki libssh.
 %setup -q
 
 %build
-install -d build
-cd build
-%cmake .. \
-	-DWITH_BLOWFISH_CIPHER=ON
+%cmake -B build \
+	-DWITH_BLOWFISH_CIPHER=ON \
+	-DWITH_EXAMPLES=OFF \
+	-DWITH_FIDO2=ON
 
-%{__make}
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
