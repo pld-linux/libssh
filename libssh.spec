@@ -18,8 +18,8 @@ BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel >= 1.2
-Requires:	openssl >= 3.5.0
-Requires:	zlib >= 1.2
+Requires:	openssl%{?_isa} >= 3.5.0
+Requires:	zlib%{?_isa} >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +45,7 @@ libcrypto (pakiet openssl).
 Summary:	Header files for libssh library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libssh
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files for libssh library.
